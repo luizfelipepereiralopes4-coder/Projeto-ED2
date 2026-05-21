@@ -7,7 +7,7 @@ void salvar_arquivo(){
 
     FILE *arquivo;
 
-    arquivo = fopen("veiculos.dat", "wb");
+    arquivo = fopen("veiculos.txt", "w");
 
     if(arquivo == NULL){
 
@@ -15,9 +15,12 @@ void salvar_arquivo(){
         return;
     }
 
-    fwrite(&quantidadeVeiculo, sizeof(int), 1, arquivo);
+    fprintf(arquivo, "%d\n", quantidadeVeiculo);
 
-    fwrite(estacionamento, sizeof(Veiculo), quantidadeVeiculo, arquivo);
+    for(int i = 0; i < quantidadeVeiculo; i++){
+
+        fprintf(arquivo, "%s %s %d %d\n", estacionamento[i].placa, estacionamento[i].modelo, estacionamento[i].horaEntrada, estacionamento[i].minutoEntrada);
+    }
 
     fclose(arquivo);
 }
@@ -26,15 +29,19 @@ void carregar_arquivo(){
 
     FILE *arquivo;
 
-    arquivo = fopen("veiculos.dat", "rb");
+    arquivo = fopen("veiculos.txt", "r");
 
     if(arquivo == NULL){
         return;
     }
 
-    fread(&quantidadeVeiculo, sizeof(int), 1, arquivo);
+    fscanf(arquivo, "%d", &quantidadeVeiculo);
 
-    fread(estacionamento, sizeof(Veiculo), quantidadeVeiculo, arquivo);
+    for(int i = 0; i < quantidadeVeiculo; i++){
+
+        fscanf(arquivo, "%s %s %d %d", estacionamento[i].placa, estacionamento[i].modelo, estacionamento[i].horaEntrada, estacionamento[i].minutoEntrada);
+        
+    }
 
     fclose(arquivo);
 
