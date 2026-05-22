@@ -6,6 +6,7 @@
 typedef struct{
     char placa[10];
     char modelo[30];
+    int tipo;
     int horaEntrada;
     int minutoEntrada;
 }Veiculo;
@@ -19,6 +20,6 @@ void listarVeiculos();
 
 int calcular_tempo(int horaEntrada, int minutoEntrada, int horaSaida, int minutoSaida);
 
-float calcular_valor(int minutos);
+float calcular_valor(int minutos, int tipo);
 
 #endif

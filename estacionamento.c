@@ -17,22 +17,27 @@ int calcular_tempo(int horaEntrada, int minutoEntrada, int horaSaida, int minuto
     return saida - entrada;
 }
 
-float calcular_valor(int minutos){
+float calcular_valor(int minuto, int tipo){
 
-    if(minutos <= 60){
-        return 5.0;
+    if(tipo == 2){
+        if(minuto <= 60) return 3.0;
+        else if(minuto <= 120) return 5.0;
+        else if(minuto <= 180) return 7.0;
+        else return 10.0;
     }
 
-    else if(minutos <= 120){
-        return 8.0;
-    }
-
-    else if(minutos <= 180){
-        return 10.0;
+    else if(tipo == 3){
+        if(minuto <= 60) return 8.0;
+        else if(minuto <= 120) return 12.0;
+        else if(minuto <= 180) return 16.0;
+        else return 20.0;
     }
 
     else{
-        return 15.0;
+        if(minuto <= 60) return 5.0;
+        else if(minuto <= 120) return 8.0;
+        else if(minuto <= 180) return 10.0;
+        else return 15.0;
     }
 }
 
@@ -50,6 +55,9 @@ float calcular_valor(int minutos){
 
         printf("Modelo: ");
         scanf("%s", estacionamento[quantidadeVeiculo].modelo);
+
+        printf("Tipo (1-Carro /  2-Moto / 3-Caminhao): ");
+        scanf("%d", &estacionamento[quantidadeVeiculo].tipo);
 
         printf("Hora de Entrada (0-23): ");
         scanf("%d", &estacionamento[quantidadeVeiculo].horaEntrada);
@@ -82,6 +90,14 @@ void listarVeiculos(){
 
         printf("Modelo: %s\n", estacionamento[i].modelo);
 
+        if(estacionamento[i].tipo == 1)
+            printf("Tipo: Carro\n");
+        else if(estacionamento[i].tipo == 2)
+            printf("Tipo: Moto\n");
+        else if(estacionamento[i].tipo == 3)
+            printf("Tipo: Caminhao\n");
+
+
         printf("Entrada: %02d:%02d\n", estacionamento[i].horaEntrada, estacionamento[i].minutoEntrada);
 
         printf("----------------------------------\n");
@@ -112,7 +128,7 @@ void registrarSaida(){
 
             int tempo = calcular_tempo(estacionamento[i].horaEntrada, estacionamento[i].minutoEntrada, horaSaida, minutoSaida);
 
-            float valor = calcular_valor(tempo);
+            float valor = calcular_valor(tempo, estacionamento[i].tipo);
 
             printf("\nTempo estacionado: %d minutos\n", tempo);
 

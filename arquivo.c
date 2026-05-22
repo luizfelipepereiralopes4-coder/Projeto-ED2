@@ -19,7 +19,7 @@ void salvar_arquivo(){
 
     for(int i = 0; i < quantidadeVeiculo; i++){
 
-        fprintf(arquivo, "%s %s %d %d\n", estacionamento[i].placa, estacionamento[i].modelo, estacionamento[i].horaEntrada, estacionamento[i].minutoEntrada);
+        fprintf(arquivo, "%s %s %d %d %d\n", estacionamento[i].placa, estacionamento[i].modelo, estacionamento[i].tipo, estacionamento[i].horaEntrada, estacionamento[i].minutoEntrada);
     }
 
     fclose(arquivo);
@@ -39,7 +39,7 @@ void carregar_arquivo(){
 
     for(int i = 0; i < quantidadeVeiculo; i++){
 
-        fscanf(arquivo, "%s %s %d %d", estacionamento[i].placa, estacionamento[i].modelo, estacionamento[i].horaEntrada, estacionamento[i].minutoEntrada);
+        fscanf(arquivo, "%s %s %d %d %d", estacionamento[i].placa, estacionamento[i].modelo, estacionamento[i].tipo, estacionamento[i].horaEntrada, estacionamento[i].minutoEntrada);
         
     }
 

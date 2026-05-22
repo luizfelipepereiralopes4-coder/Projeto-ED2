@@ -40,9 +40,7 @@ int main(){
             default: printf("\nOpcao invalida!\n");
 
       }
-}
-
-while(opcao != 0);
+    } while(opcao != 0);
 
 return 0;
 
