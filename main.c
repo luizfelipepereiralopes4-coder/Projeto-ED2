@@ -16,6 +16,9 @@ int main(){
         printf("    SISTEMA DE ESTACIONAMENTO\n");
         printf("==============================\n");
 
+        printf(" Vagas: %d/%d Disponiveis\n", MAX_VEICULOS - quantidadeVeiculo, MAX_VEICULOS);
+
+        printf("==============================\n");
         printf("1 - Registrar entrada\n");
         printf("2 - Registrar saida\n");       
         printf("3 - Listar Veiculos\n");
