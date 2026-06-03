@@ -3,6 +3,15 @@
 
 #define MAX_VEICULOS 50
 
+#define RESET   "\033[0m"
+#define NEGRITO "\033[1m"
+#define VERDE   "\033[32m"
+#define VERMELHO    "\033[31m"  
+#define AMARELO "\033[33m"
+#define CIANO   "\033[36m"
+#define BRANCO  "\033[37m"
+
+
 typedef struct{
     char placa[10];
     char modelo[30];

@@ -44,11 +44,11 @@ float calcular_valor(int minuto, int tipo){
     void registrarEntrada(){
 
         if(quantidadeVeiculo>= MAX_VEICULOS){
-            printf("\nEstacionamento Lotado!\n");
+            printf(VERMELHO "\nEstacionamento Lotado!\n" RESET);
             return;
         }
 
-        printf("\n========== ENTRADA ==========\n");
+        printf(NEGRITO CIANO "\n========== ENTRADA ==========\n" RESET);
 
         printf("Placa: ");
         scanf("%s", estacionamento[quantidadeVeiculo].placa);
@@ -63,7 +63,7 @@ float calcular_valor(int minuto, int tipo){
 
             if(estacionamento[quantidadeVeiculo].tipo < 1 || estacionamento[quantidadeVeiculo].tipo > 3){
 
-                printf("Tipo Invalido! Digite 1, 2, ou 3.\n");
+                printf(VERMELHO "Tipo Invalido! Digite 1, 2, ou 3.\n" RESET);
             }
 
         } while(estacionamento[quantidadeVeiculo].tipo < 1 || estacionamento[quantidadeVeiculo].tipo > 3);
@@ -80,7 +80,7 @@ float calcular_valor(int minuto, int tipo){
 
             if(estacionamento[quantidadeVeiculo].horaEntrada < 0 || estacionamento[quantidadeVeiculo].horaEntrada > 23 || estacionamento[quantidadeVeiculo].minutoEntrada < 0 || estacionamento[quantidadeVeiculo].minutoEntrada > 59){
 
-                printf("Horario Invalido! Tente Novamente.\n");
+                printf(VERMELHO "Horario Invalido! Tente Novamente.\n" RESET);
 
             }
             else{
@@ -93,41 +93,41 @@ float calcular_valor(int minuto, int tipo){
 
         salvar_arquivo();
 
-        printf("\nVeiculo cadastrado com sucesso!\n");
+        printf(VERDE "\nVeiculo cadastrado com sucesso!\n" RESET);
 
-        printf("Vagas Disponiveis: %d/%d\n", MAX_VEICULOS - quantidadeVeiculo, MAX_VEICULOS);
+        printf(AMARELO "Vagas Disponiveis: %d/%d\n" RESET, MAX_VEICULOS - quantidadeVeiculo, MAX_VEICULOS);
     }
 
 
 void listarVeiculos(){
 
     if(quantidadeVeiculo == 0){
-        printf("\nNenhum veiculo estacionado.\n");
+        printf(AMARELO "\nNenhum veiculo estacionado.\n" RESET);
         return;
     }
 
-    printf("\n========== VEICULOS ==========\n");
-    printf("Vagas Ocupadas: %d | Vagas Disponiveis: %d\n", quantidadeVeiculo, MAX_VEICULOS - quantidadeVeiculo);
+    printf(NEGRITO CIANO "\n========== VEICULOS ==========\n" RESET);
+    printf(AMARELO "Vagas Ocupadas: %d | Vagas Disponiveis: %d\n" RESET, quantidadeVeiculo, MAX_VEICULOS - quantidadeVeiculo);
 
     for(int i = 0; i < quantidadeVeiculo; i++){
 
-        printf("\nVeiculo %d\n", i + 1);
+        printf(NEGRITO "\nVeiculo %d\n" RESET, i + 1);
 
-        printf("Placa: %s\n", estacionamento[i].placa);
+        printf("Placa: " VERDE "%s\n" RESET, estacionamento[i].placa);
 
-        printf("Modelo: %s\n", estacionamento[i].modelo);
+        printf("Modelo: " VERDE "%s\n" RESET, estacionamento[i].modelo);
 
         if(estacionamento[i].tipo == 1)
-            printf("Tipo: Carro\n");
+            printf(VERDE"Tipo: Carro\n" RESET);
         else if(estacionamento[i].tipo == 2)
-            printf("Tipo: Moto\n");
+            printf(VERDE"Tipo: Moto\n" RESET);
         else if(estacionamento[i].tipo == 3)
-            printf("Tipo: Caminhao\n");
+            printf(VERDE"Tipo: Caminhao\n" RESET);
 
 
-        printf("Entrada: %02d:%02d\n", estacionamento[i].horaEntrada, estacionamento[i].minutoEntrada);
+        printf(VERDE"Entrada: %02d:%02d\n" RESET, estacionamento[i].horaEntrada, estacionamento[i].minutoEntrada);
 
-        printf("----------------------------------\n");
+        printf(CIANO"----------------------------------\n" RESET);
     }
 }
 
@@ -135,7 +135,7 @@ void registrarSaida(){
 
     char placa[10];
 
-    printf("\n========== SAIDA ==========\n");
+    printf(NEGRITO CIANO"\n========== SAIDA ==========\n" RESET);
 
     printf("Digite a placa do veiculo: ");
     scanf("%s", placa);
@@ -159,8 +159,8 @@ void registrarSaida(){
 
                 if(tempoVerificado < 0){
 
-                    printf("Horario de Saida Invalido! ");
-                    printf("Deve ser apos %02d:%02d.\n", estacionamento[i].horaEntrada, estacionamento[i].minutoEntrada);
+                    printf(VERMELHO"Horario de Saida Invalido! " RESET);
+                    printf(VERMELHO"Deve ser apos %02d:%02d.\n" RESET, estacionamento[i].horaEntrada, estacionamento[i].minutoEntrada);
                 }
                 else{
                     horaValida = 1;
@@ -171,9 +171,9 @@ void registrarSaida(){
 
             float valor = calcular_valor(tempo, estacionamento[i].tipo);
 
-            printf("\nTempo estacionado: %d minutos\n", tempo);
+            printf(AMARELO"\nTempo estacionado: %d minutos\n" RESET, tempo);
 
-            printf("Valor a pagar: R$ %2.f\n", valor);
+            printf(NEGRITO VERDE"Valor a pagar: R$ %2.f\n" RESET, valor);
 
             for(int j = i; j < quantidadeVeiculo - 1; j++){
 
@@ -183,15 +183,15 @@ void registrarSaida(){
 
             salvar_arquivo();
 
-            printf("\nSaida registrada com sucesso!\n");
+            printf(VERDE"\nSaida registrada com sucesso!\n" RESET);
 
-            printf("Vagas Disponiveis: %d/%d\n", MAX_VEICULOS - quantidadeVeiculo, MAX_VEICULOS);
+            printf(AMARELO"Vagas Disponiveis: %d/%d\n" RESET, MAX_VEICULOS - quantidadeVeiculo, MAX_VEICULOS);
 
             return;
         }
     }
 
-    printf("\nVeiculo nao encontrado.\n");
+    printf(VERMELHO"\nVeiculo nao encontrado.\n" RESET);
 }
 
 

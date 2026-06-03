@@ -12,17 +12,24 @@ int main(){
     do{
         
         printf("\n");
-        printf("==============================\n");
-        printf("    SISTEMA DE ESTACIONAMENTO\n");
-        printf("==============================\n");
+        printf(NEGRITO CIANO "==============================\n" RESET);
+        printf(NEGRITO CIANO "    SISTEMA DE ESTACIONAMENTO\n" RESET);
+        printf(NEGRITO CIANO "==============================\n" RESET);
 
-        printf(" Vagas: %d/%d Disponiveis\n", MAX_VEICULOS - quantidadeVeiculo, MAX_VEICULOS);
+        if(quantidadeVeiculo >= MAX_VEICULOS){
 
-        printf("==============================\n");
-        printf("1 - Registrar entrada\n");
-        printf("2 - Registrar saida\n");       
-        printf("3 - Listar Veiculos\n");
-        printf("0 - Encerrar sistema\n");
+            printf(VERMELHO "Vagas: %d/%d Disponiveis\n" RESET, MAX_VEICULOS - quantidadeVeiculo, MAX_VEICULOS);
+        }
+        else{
+            printf(AMARELO "Vagas: %d/%d Disponiveis\n" RESET, MAX_VEICULOS - quantidadeVeiculo, MAX_VEICULOS);
+        }
+
+        printf(NEGRITO CIANO "==============================\n" RESET);
+
+        printf(BRANCO "1 - Registrar entrada\n" RESET);
+        printf(BRANCO "2 - Registrar saida\n" RESET);       
+        printf(BRANCO "3 - Listar Veiculos\n" RESET);
+        printf(BRANCO "0 - Encerrar sistema\n" RESET);
         printf("\nEscolha uma opcao: ");
         scanf("%d", &opcao);
 
@@ -37,10 +44,10 @@ int main(){
             case 3: listarVeiculos();
             break;
 
-            case 0: printf("\nEncerrando sistema...\n");
+            case 0: printf(AMARELO "\nEncerrando sistema...\n" RESET);
             break;
 
-            default: printf("\nOpcao invalida!\n");
+            default: printf(VERMELHO "\nOpcao invalida!\n" RESET);
 
       }
     } while(opcao != 0);
