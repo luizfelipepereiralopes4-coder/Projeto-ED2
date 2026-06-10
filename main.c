@@ -10,24 +10,25 @@ int main(){
     carregar_arquivo();
 
     do{
-        
+
         printf("\n");
         printf(NEGRITO CIANO "==============================\n" RESET);
-        printf(NEGRITO CIANO "    SISTEMA DE ESTACIONAMENTO\n" RESET);
+        printf(NEGRITO CIANO "   SISTEMA DE ESTACIONAMENTO\n" RESET);
         printf(NEGRITO CIANO "==============================\n" RESET);
 
         if(quantidadeVeiculo >= MAX_VEICULOS){
-
-            printf(VERMELHO "Vagas: %d/%d Disponiveis\n" RESET, MAX_VEICULOS - quantidadeVeiculo, MAX_VEICULOS);
+            printf(VERMELHO " Vagas: %d/%d Disponiveis\n" RESET,
+                   MAX_VEICULOS - quantidadeVeiculo, MAX_VEICULOS);
         }
         else{
-            printf(AMARELO "Vagas: %d/%d Disponiveis\n" RESET, MAX_VEICULOS - quantidadeVeiculo, MAX_VEICULOS);
+            printf(AMARELO " Vagas: %d/%d Disponiveis\n" RESET,
+                   MAX_VEICULOS - quantidadeVeiculo, MAX_VEICULOS);
         }
 
         printf(NEGRITO CIANO "==============================\n" RESET);
 
         printf(BRANCO "1 - Registrar entrada\n" RESET);
-        printf(BRANCO "2 - Registrar saida\n" RESET);       
+        printf(BRANCO "2 - Registrar saida\n" RESET);
         printf(BRANCO "3 - Listar Veiculos\n" RESET);
         printf(BRANCO "0 - Encerrar sistema\n" RESET);
         printf("\nEscolha uma opcao: ");
@@ -48,15 +49,9 @@ int main(){
             break;
 
             default: printf(VERMELHO "\nOpcao invalida!\n" RESET);
+        }
 
-      }
     } while(opcao != 0);
 
-return 0;
-
+    return 0;
 }
-
-
-
-
-
