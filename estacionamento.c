@@ -92,6 +92,24 @@ float calcular_valor(int minuto, int tipo){
             }
         } while(!validar_PlacaMercosul(estacionamento[quantidadeVeiculo].placa));
 
+        //Verificação da Placa Duplicada
+        int placa_duplicada = 0;
+
+        for(int i = 0; i < quantidadeVeiculo; i++){
+
+            if(strcmp(estacionamento[i].placa, estacionamento[quantidadeVeiculo].placa) == 0){
+
+                placa_duplicada = 1;
+                break;
+            }
+        }
+
+        if(placa_duplicada){
+            
+            printf(VERMELHO"\nVeiculo ja estacionado!\n" RESET);
+            return;
+        }
+
         printf("Modelo: ");
         scanf("%s", estacionamento[quantidadeVeiculo].modelo);
 
@@ -216,7 +234,7 @@ void registrarSaida(){
 
             printf(AMARELO"\nTempo estacionado: %d minutos\n" RESET, tempo);
 
-            printf(NEGRITO VERDE"Valor a pagar: R$ %2.f\n" RESET, valor);
+            printf(NEGRITO VERDE"Valor a pagar: R$ %.2f\n" RESET, valor);
 
             for(int j = i; j < quantidadeVeiculo - 1; j++){
 
