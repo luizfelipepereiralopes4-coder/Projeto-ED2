@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<string.h>
+#include<ctype.h>
 
 #include "estacionamento.h"
 #include "arquivo.h"
@@ -7,6 +8,31 @@
 Veiculo estacionamento[MAX_VEICULOS];
 
 int quantidadeVeiculo = 0;
+
+int validar_PlacaMercosul(char *placa){
+
+    if(strlen(placa) != 7){
+        return 0;
+    }
+
+    if(!isalpha(placa[0]) || !isalpha(placa[1]) || !isalpha(placa[2])){
+        return 0;
+    }
+
+    if(!isdigit(placa[3])){
+        return 0;
+    }
+
+    if(!isalpha(placa[4])){
+        return 0;
+    }
+
+    if(!isdigit(placa[5]) || !isdigit(placa[6])){
+        return 0;
+    }
+
+    return 1;
+}
 
 int calcular_tempo(int horaEntrada, int minutoEntrada, int horaSaida, int minutoSaida){
     
@@ -50,8 +76,21 @@ float calcular_valor(int minuto, int tipo){
 
         printf(NEGRITO CIANO "\n========== ENTRADA ==========\n" RESET);
 
-        printf("Placa: ");
-        scanf("%s", estacionamento[quantidadeVeiculo].placa);
+        // Validação da Placa
+        do{
+            printf("Placa - (Formato Mercosul):  ");
+            scanf("%s", estacionamento[quantidadeVeiculo].placa);
+
+            for(int i = 0; i < strlen(estacionamento[quantidadeVeiculo].placa); i++){
+
+                estacionamento[quantidadeVeiculo].placa[i] = toupper(estacionamento[quantidadeVeiculo].placa[i]);
+            }
+
+            if(!validar_PlacaMercosul(estacionamento[quantidadeVeiculo].placa)){
+
+                printf(VERMELHO"Placa Invalida! Insira Novamente.\n" RESET);
+            }
+        } while(!validar_PlacaMercosul(estacionamento[quantidadeVeiculo].placa));
 
         printf("Modelo: ");
         scanf("%s", estacionamento[quantidadeVeiculo].modelo);
@@ -139,6 +178,10 @@ void registrarSaida(){
 
     printf("Digite a placa do veiculo: ");
     scanf("%s", placa);
+
+    for(int i = 0; i < strlen(placa); i++){
+        placa[i] = toupper(placa[i]);
+    }
 
     for(int i = 0; i < quantidadeVeiculo; i++){
 
