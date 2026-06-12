@@ -111,7 +111,15 @@ float calcular_valor(int minuto, int tipo){
         }
 
         printf("Modelo: ");
-        scanf("%s", estacionamento[quantidadeVeiculo].modelo);
+
+        getchar();
+        fgets(estacionamento[quantidadeVeiculo].modelo, 30, stdin);
+
+        int len = strlen(estacionamento[quantidadeVeiculo].modelo);
+
+        if(estacionamento[quantidadeVeiculo].modelo[len - 1] == '\n'){
+            estacionamento[quantidadeVeiculo].modelo[len - 1] = '\0';
+        }
 
         //Validação do tipo 
         do{
