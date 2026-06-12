@@ -46,24 +46,24 @@ int calcular_tempo(int horaEntrada, int minutoEntrada, int horaSaida, int minuto
 float calcular_valor(int minuto, int tipo){
 
     if(tipo == 2){
-        if(minuto <= 60) return 3.0;
-        else if(minuto <= 120) return 5.0;
-        else if(minuto <= 180) return 7.0;
-        else return 10.0;
+        if(minuto <= 60) return 8.0;
+        else if(minuto <= 120) return 12.0;
+        else if(minuto <= 180) return 15.0;
+        else return 18.0;
     }
 
     else if(tipo == 3){
-        if(minuto <= 60) return 8.0;
-        else if(minuto <= 120) return 12.0;
-        else if(minuto <= 180) return 16.0;
-        else return 20.0;
+        if(minuto <= 60) return 12.0;
+        else if(minuto <= 120) return 18.0;
+        else if(minuto <= 180) return 25.0;
+        else return 30.0;
     }
 
     else{
-        if(minuto <= 60) return 5.0;
-        else if(minuto <= 120) return 8.0;
-        else if(minuto <= 180) return 10.0;
-        else return 15.0;
+        if(minuto <= 60) return 10.0;
+        else if(minuto <= 120) return 15.0;
+        else if(minuto <= 180) return 18.0;
+        else return 20.0;
     }
 }
 
