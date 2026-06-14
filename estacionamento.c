@@ -161,6 +161,11 @@ float calcular_valor(int minuto, int tipo){
         printf(VERDE "\nVeiculo cadastrado com sucesso!\n" RESET);
 
         printf(AMARELO "Vagas Disponiveis: %d/%d\n" RESET, MAX_VEICULOS - quantidadeVeiculo, MAX_VEICULOS);
+
+        // Pausa após entrada
+        printf(AMARELO"\nPressione Enter para voltar ao menu..." RESET);
+        getchar();
+        getchar();
     }
 
 
@@ -197,6 +202,11 @@ void listarVeiculos(){
 }
 
 void registrarSaida(){
+
+    if(quantidadeVeiculo == 0){
+        printf(VERMELHO"\nNenhum veiculo estacionado para registrar saida!\n" RESET);
+        return;
+    }
 
     char placa[10];
 
@@ -255,6 +265,10 @@ void registrarSaida(){
             printf(VERDE"\nSaida registrada com sucesso!\n" RESET);
 
             printf(AMARELO"Vagas Disponiveis: %d/%d\n" RESET, MAX_VEICULOS - quantidadeVeiculo, MAX_VEICULOS);
+
+            printf(AMARELO"\nPressione Enter para voltar ao menu..." RESET);
+            getchar();
+            getchar();
 
             return;
         }
