@@ -26,6 +26,7 @@ extern int quantidadeVeiculo;
 void registrarEntrada();
 void registrarSaida();
 void listarVeiculos();
+void busca_por_modelo();
 
 int calcular_tempo(int horaEntrada, int minutoEntrada, int horaSaida, int minutoSaida);
 

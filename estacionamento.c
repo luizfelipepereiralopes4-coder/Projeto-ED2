@@ -201,6 +201,66 @@ void listarVeiculos(){
     }
 }
 
+// Busca por Modelo
+void busca_por_modelo(){
+
+    if(quantidadeVeiculo == 0){
+        printf(VERMELHO "\nNenhum veiculo estacionado.\n" RESET);
+        return;
+    }
+
+    char modelo[30];
+
+    printf(NEGRITO CIANO "\n========== BUSCA POR MODELO ==========\n" RESET);
+
+    printf("Digite o modelo: ");
+
+
+    while(getchar() != '\n');
+
+    fgets(modelo, 30, stdin);
+
+    int len = strlen(modelo);
+    if(modelo[len - 1] == '\n'){
+        modelo[len - 1] = '\0';
+    }
+
+    int encontrados = 0;
+
+    for(int i = 0; i < quantidadeVeiculo; i++){
+
+        if(strcmp(estacionamento[i].modelo, modelo) == 0){
+            encontrados++;
+
+            printf(NEGRITO"\nVeiculo %d\n" RESET, encontrados);
+            printf(VERDE "Placa: %s\n" RESET, estacionamento[i].placa);
+            printf(VERDE "Modelo: %s\n" RESET, estacionamento[i].modelo);
+
+            if(estacionamento[i].tipo == 1)
+                printf(VERDE"Tipo: Carro\n" RESET);
+            else if(estacionamento[i].tipo == 2)
+                printf(VERDE"Tipo: Moto\n" RESET);
+            else if(estacionamento[i].tipo == 3)
+                printf(VERDE"Tipo: Caminhao\n" RESET);  
+                
+            printf(VERDE"Entrada: %02d:%02d\n" RESET, estacionamento[i].horaEntrada, estacionamento[i].minutoEntrada);
+            
+            printf(CIANO"------------------------------------\n" RESET);
+        }
+    }
+
+    if(encontrados == 0){
+        printf(VERMELHO"\nNenhum veiculo do modelo \"%s\" encontrado.\n" RESET, modelo);
+    }
+    else{
+        printf(AMARELO"\n%d veiculo(s) do modelo \"%s\" encontrado(s).\n" RESET, encontrados, modelo);
+    }
+
+    printf(AMARELO"\nPressione Enter para voltar ao menu..." RESET);
+    getchar();
+    getchar();
+}
+
 void registrarSaida(){
 
     if(quantidadeVeiculo == 0){

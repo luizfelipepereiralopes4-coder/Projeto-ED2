@@ -31,7 +31,8 @@ int main(){
         printf(BRANCO "1 - Registrar entrada\n" RESET);
         printf(BRANCO "2 - Registrar saida\n" RESET);
         printf(BRANCO "3 - Listar Veiculos\n" RESET);
-        printf(BRANCO "4 - Limpar Tela\n" RESET);
+        printf(BRANCO "4 - Buscar por modelo\n" RESET);
+        printf(BRANCO "5 - Limpar Tela\n" RESET);
         printf(BRANCO "0 - Encerrar sistema\n" RESET);
         printf("\nEscolha uma opcao: ");
         scanf("%d", &opcao);
@@ -44,10 +45,17 @@ int main(){
             case 2: registrarSaida();
             break;
 
-            case 3: listarVeiculos();
+            case 3: 
+                listarVeiculos();
+                printf(AMARELO"\nPressione Enter para voltar ao menu..." RESET);
+                getchar();
+                getchar();
             break;
 
-            case 4:
+            case 4: busca_por_modelo();
+            break;   
+            
+            case 5:
                 system("cls");
             break;    
 
