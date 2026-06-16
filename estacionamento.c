@@ -179,27 +179,73 @@ void listarVeiculos(){
     printf(NEGRITO CIANO "\n========== VEICULOS ==========\n" RESET);
     printf(AMARELO "Vagas Ocupadas: %d | Vagas Disponiveis: %d\n" RESET, quantidadeVeiculo, MAX_VEICULOS - quantidadeVeiculo);
 
+    printf(NEGRITO AMARELO "\n---------- CARROS ----------\n" RESET);
+
+    int contador = 0;
+
     for(int i = 0; i < quantidadeVeiculo; i++){
 
-        printf(NEGRITO "\nVeiculo %d\n" RESET, i + 1);
+        if(estacionamento[i].tipo == 1){
+            contador++;
 
-        printf("Placa: " VERDE "%s\n" RESET, estacionamento[i].placa);
+            printf(NEGRITO "\nVeiculo %d\n" RESET, contador);
+            printf(VERDE "Placa: %s\n" RESET, estacionamento[i].placa);
+            printf(VERDE "Modelo %s\n" RESET, estacionamento[i].modelo);
+            printf(VERDE "Entrada: %02d:%02d\n" RESET, estacionamento[i].horaEntrada, estacionamento[i].minutoEntrada);
 
-        printf("Modelo: " VERDE "%s\n" RESET, estacionamento[i].modelo);
+            printf(CIANO"----------------------------------\n" RESET);
+        }
+    }
 
-        if(estacionamento[i].tipo == 1)
-            printf(VERDE"Tipo: Carro\n" RESET);
-        else if(estacionamento[i].tipo == 2)
-            printf(VERDE"Tipo: Moto\n" RESET);
-        else if(estacionamento[i].tipo == 3)
-            printf(VERDE"Tipo: Caminhao\n" RESET);
+    if(contador == 0){
+        printf(AMARELO "Nenhum veivulo encontrado.\n" RESET);
+    }
 
+    printf(NEGRITO AMARELO "\n---------- MOTOS ----------\n" RESET);
 
-        printf(VERDE"Entrada: %02d:%02d\n" RESET, estacionamento[i].horaEntrada, estacionamento[i].minutoEntrada);
+    contador = 0;
 
-        printf(CIANO"----------------------------------\n" RESET);
+    for(int i = 0; i < quantidadeVeiculo; i++){
+
+        if(estacionamento[i].tipo == 2){
+            contador++;
+
+            printf(NEGRITO "\nVeiculo %d\n" RESET, contador);
+            printf(VERDE "Placa: %s\n" RESET, estacionamento[i].placa);
+            printf(VERDE "Modelo %s\n" RESET, estacionamento[i].modelo);
+            printf(VERDE "Entrada: %02d:%02d\n" RESET, estacionamento[i].horaEntrada, estacionamento[i].minutoEntrada);
+
+            printf(CIANO "-------------------------------------\n" RESET);
+        }
+    }
+
+    if(contador == 0){
+        printf(AMARELO "Nenhuma moto encontrada.\n" RESET);
+    }
+
+    printf(NEGRITO AMARELO "\n----------- CAMINHAO ----------\n" RESET);
+
+    contador = 0;
+
+    for(int i = 0; i < quantidadeVeiculo; i++){
+
+        if(estacionamento[i].tipo == 3){
+            contador++;
+
+            printf(NEGRITO "\nVeiculo %d\n" RESET, contador);
+            printf(VERDE "Placa: %s\n" RESET, estacionamento[i].placa);
+            printf(VERDE "Modelo %s\n" RESET, estacionamento[i].modelo);
+            printf(VERDE "Entrada: %02d:%02d\n" RESET, estacionamento[i].horaEntrada, estacionamento[i].minutoEntrada);
+
+            printf(CIANO "-------------------------------------\n" RESET);
+        }
+    }
+
+    if(contador = 0){
+        printf(AMARELO "Nenhum caminhao encontrado.\n" RESET);
     }
 }
+
 
 // Busca por Modelo
 void busca_por_modelo(){
