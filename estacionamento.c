@@ -241,7 +241,7 @@ void listarVeiculos(){
         }
     }
 
-    if(contador = 0){
+    if(contador == 0){
         printf(AMARELO "Nenhum caminhao encontrado.\n" RESET);
     }
 }
@@ -305,6 +305,60 @@ void busca_por_modelo(){
     printf(AMARELO"\nPressione Enter para voltar ao menu..." RESET);
     getchar();
     getchar();
+}
+
+// Função para buscar a placa do veículo
+void busca_por_placa(){
+
+    if(quantidadeVeiculo == 0){
+        printf(VERMELHO "\nNenhum veiculo estacionado.\n" RESET);
+        return;
+    }
+
+    char placa[10];
+
+    printf(NEGRITO CIANO "\n========== BUSCA POR PLACA =========\n" RESET);
+
+    printf("Digite a placa: ");
+    scanf("%s", placa);
+
+    for(int i = 0; i < strlen(placa); i++){
+        placa[i] = toupper(placa[i]);
+    }
+
+    for(int i = 0; i < quantidadeVeiculo; i++){
+
+        if(strcmp(estacionamento[i].placa, placa) == 0){
+            printf(NEGRITO CIANO "\n========== VEICULO ENCONTRADO ==========\n" RESET);
+
+            printf("Placa: " VERDE "%s\n" RESET, estacionamento[i].placa);
+            printf("Modelo: " VERDE "%s\n" RESET, estacionamento[i].modelo);
+
+
+            if(estacionamento[i].tipo == 1)
+                printf("Tipo:" VERDE "Carro\n" RESET);
+            else if(estacionamento[i].tipo == 2)
+                printf("Tipo:" VERDE "Moto\n" RESET);
+            else if(estacionamento[i].tipo == 3)
+                printf("Tipo:" VERDE "Caminhao\n" RESET);                
+            printf("Entrada:" VERDE "%02d:%02d\n" RESET, estacionamento[i].horaEntrada, estacionamento[i].minutoEntrada);
+            
+            printf(CIANO "----------------------------------------------\n" RESET);
+            
+            printf(AMARELO "Pressione Enter para voltar ao menu..." RESET);
+            getchar();
+            getchar();
+
+            return;
+        }
+    }
+
+    printf(VERMELHO "\nVeiculo com placa \"%s\" nao encontrado.\n" RESET, placa);
+
+    printf(AMARELO "\nPressione Enter para voltar ao menu..." RESET);
+    getchar();
+    getchar();
+
 }
 
 void registrarSaida(){

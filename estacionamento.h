@@ -27,6 +27,7 @@ void registrarEntrada();
 void registrarSaida();
 void listarVeiculos();
 void busca_por_modelo();
+void busca_por_placa();
 
 int calcular_tempo(int horaEntrada, int minutoEntrada, int horaSaida, int minutoSaida);
 

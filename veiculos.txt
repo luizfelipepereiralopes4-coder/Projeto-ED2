@@ -1,4 +1,1 @@
-3
-ABC1D23 Mestico movel 1 12 0
-GGD6G44 cg160 2 20 0
-LKJ5D69 carreta 3 21 25
+0
