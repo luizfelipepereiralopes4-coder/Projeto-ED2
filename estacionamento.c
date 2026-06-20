@@ -361,6 +361,41 @@ void busca_por_placa(){
 
 }
 
+void salvar_historico(Veiculo v, int hora_saida, int minuto_saida, int tempo, float valor){
+
+    FILE *arquivo;
+    arquivo = fopen("historico.txt", "a");
+
+        if(arquivo == NULL){
+            printf(VERMELHO "\nErro ao abrir o historico!\n" RESET);
+            return;
+        }
+
+        char tipo_texto[10];
+
+        if(v.tipo == 1){
+            strcpy(tipo_texto, "Carro");
+        }
+        else if(v.tipo == 2){
+            strcpy(tipo_texto, "Moto");
+        }
+        else{
+            strcpy(tipo_texto, "Caminhao");
+        }
+
+    fprintf(arquivo, "==============================\n");
+    fprintf(arquivo, "Placa:    %s\n", v.placa);
+    fprintf(arquivo, "Modelo:   %s\n", v.modelo);
+    fprintf(arquivo, "Tipo:     %s\n", tipo_texto);
+    fprintf(arquivo, "Entrada:  %02d:%02d\n", v.horaEntrada, v.minutoEntrada);
+    fprintf(arquivo, "Saida:    %02d:%02d\n", hora_saida, minuto_saida);
+    fprintf(arquivo, "Tempo:    %d minutos\n", tempo);
+    fprintf(arquivo, "Valor:    R$ %.2f\n", valor);
+    fprintf(arquivo, "==============================\n\n");
+
+    fclose(arquivo);
+}
+
 void registrarSaida(){
 
     if(quantidadeVeiculo == 0){
@@ -413,6 +448,8 @@ void registrarSaida(){
             printf(AMARELO"\nTempo estacionado: %d minutos\n" RESET, tempo);
 
             printf(NEGRITO VERDE"Valor a pagar: R$ %.2f\n" RESET, valor);
+
+            salvar_historico(estacionamento[i], horaSaida, minutoSaida, tempo, valor);
 
             for(int j = i; j < quantidadeVeiculo - 1; j++){
 

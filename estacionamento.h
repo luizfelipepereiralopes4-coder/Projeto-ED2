@@ -29,6 +29,8 @@ void listarVeiculos();
 void busca_por_modelo();
 void busca_por_placa();
 
+void salvar_historico(Veiculo v, int hora_saida, int minuto_saida, int tempo, float valor);
+
 int calcular_tempo(int horaEntrada, int minutoEntrada, int horaSaida, int minutoSaida);
 
 float calcular_valor(int minutos, int tipo);

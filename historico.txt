@@ -1,0 +1,20 @@
+==============================
+Placa:    ABC1D23
+Modelo:   fox
+Tipo:     Carro
+Entrada:  10:00
+Saida:    15:30
+Tempo:    330 minutos
+Valor:    R$ 20.00
+==============================
+
+==============================
+Placa:    DER5R69
+Modelo:   cg160
+Tipo:     Moto
+Entrada:  14:00
+Saida:    17:45
+Tempo:    225 minutos
+Valor:    R$ 18.00
+==============================
+
